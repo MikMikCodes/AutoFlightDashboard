@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FaCloudUploadAlt } from "react-icons/fa";
 
 const FileUpload = () => {
   const [file, setFile] = useState(null);
@@ -27,15 +28,46 @@ const FileUpload = () => {
   };
 
   return (
-    <div style={{ margin: "20px", textAlign: "center" }}>
-      <h3>Upload Flight Data</h3>
+    <div style={styles.uploadContainer}>
       <input
         type="file"
         onChange={(e) => setFile(e.target.files[0])}
+        style={styles.fileInput}
       />
-      <button onClick={handleUpload}>Upload</button>
+      <button onClick={handleUpload} style={styles.uploadButton}>
+        <FaCloudUploadAlt style={{ marginRight: "0.5rem" }} />
+        Upload
+      </button>
     </div>
   );
+};
+
+const styles = {
+  uploadContainer: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: "1rem", 
+    margin: "20px",
+  },
+  fileInput: {
+    fontFamily: "'Lato', sans-serif",
+    fontSize: "1rem",
+    padding: "0.4rem",
+    borderRadius: "5px",
+    border: "1px solid #ccc",
+  },
+  uploadButton: {
+    backgroundColor: "#7ED7C5",
+    color: "#FFFFFF",
+    border: "none",
+    borderRadius: "5px",
+    padding: "0.5rem 1rem",
+    fontFamily: "'Lato', sans-serif",
+    fontSize: "1rem",
+    cursor: "pointer",
+    transition: "background-color 0.3s ease",
+  },
 };
 
 export default FileUpload;
